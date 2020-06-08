@@ -8,15 +8,15 @@ import (
 
 func CreatePost(db *database.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		if err := r.ParseForm(); err != nil {
-			log.Printf("bad create post from %s: %v", r.RemoteAddr, err)
+		name := r.PostFormValue("name")
+
+		if name == "" {
+			log.Printf("bad create post from %s: empty name", r.RemoteAddr)
 			w.Write([]byte("bad create post"))
 			w.WriteHeader(http.StatusBadRequest)
 
 			return
 		}
-
-		name := r.FormValue("name")
 
 		key, err := db.CreateKey(name)
 		if err != nil {
