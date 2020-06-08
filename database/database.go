@@ -14,8 +14,8 @@ type DB struct {
 
 const queryCreateKeysTable = `CREATE TABLE IF NOT EXISTS "keys" (
   "id" SERIAL UNIQUE PRIMARY KEY,
-  "created_at" datetime,
-  "updated_at" datetime,
+  "created_at" timestamp,
+  "updated_at" timestamp,
   "name" varchar UNIQUE,
   "key" varchar UNIQUE
 )`
