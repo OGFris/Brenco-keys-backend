@@ -62,11 +62,11 @@ func (db *DB) CreateKey(name string) (string, error) {
 	return key, nil
 }
 
-var queryRemoveKey = `DELETE FROM keys WHERE name=$1`
+var queryRemoveKey = `DELETE FROM keys WHERE id=$1`
 
-// RemoveKey takes a name and remove the row associated to it in the keys table.
-func (db *DB) RemoveKey(name string) error {
-	_, err := db.Exec(queryRemoveKey, name)
+// RemoveKey takes an id and remove the row associated to it in the keys table.
+func (db *DB) RemoveKey(id int) error {
+	_, err := db.Exec(queryRemoveKey, id)
 
 	if err != nil {
 

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/OGFris/Brenco-keys-backend/database"
+	"github.com/OGFris/Brenco-keys-backend/handler"
 	"github.com/gorilla/mux"
 	"net/http"
 	"os"
@@ -14,13 +15,17 @@ func main() {
 		port = "8080"
 	}
 
-	_, err := database.New()
+	db, err := database.New()
 	if err != nil {
 
 		panic(err)
 	}
 
 	router := mux.NewRouter()
+
+	router.HandleFunc("/api/keys/create", handler.CreatePost(db)).Methods("POST")
+	router.HandleFunc("/api/keys/remove/{id}", handler.RemovePost(db)).Methods("POST")
+	router.HandleFunc("/api/keys", handler.KeysGet(db)).Methods("GET")
 
 	s := &http.Server{
 		Addr:    ":" + port,
