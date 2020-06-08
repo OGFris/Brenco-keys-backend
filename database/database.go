@@ -21,11 +21,11 @@ const queryCreateKeysTable = `CREATE TABLE IF NOT EXISTS "keys" (
 )`
 
 type Key struct {
-	Id        int       `db:"id"`
-	CreatedAt time.Time `db:"created_at"`
-	UpdatedAt time.Time `db:"updated_at"`
-	Name      string    `db:"name"`
-	Key       string    `db:"key"`
+	Id        int       `db:"id" json:"id"`
+	CreatedAt time.Time `db:"created_at" json:"created_at"`
+	UpdatedAt time.Time `db:"updated_at" json:"updated_at"`
+	Name      string    `db:"name" json:"name"`
+	Key       string    `db:"key" json:"key"`
 }
 
 // New connects to the postgres database and returns the database instance.
