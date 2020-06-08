@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"github.com/OGFris/Brenco-keys-backend/database"
 	"github.com/gorilla/mux"
+	_ "github.com/jackc/pgx"
+	_ "github.com/jackc/pgx/pgtype"
+	_ "github.com/jackc/pgx/stdlib"
 	"net/http"
 	"os"
 )
