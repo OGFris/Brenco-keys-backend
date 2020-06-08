@@ -2,7 +2,7 @@ package database
 
 import (
 	"github.com/OGFris/Brenco-keys-backend/utils"
-	_ "github.com/jackc/pgx"
+	_ "github.com/jackc/pgx/stdlib"
 	"github.com/jmoiron/sqlx"
 	"os"
 	"time"
