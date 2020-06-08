@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/OGFris/Brenco-keys-backend/database"
 	"github.com/gorilla/mux"
 	"net/http"
 	"os"
@@ -13,6 +14,12 @@ func main() {
 		port = "8080"
 	}
 
+	_, err := database.New()
+	if err != nil {
+
+		panic(err)
+	}
+
 	router := mux.NewRouter()
 
 	s := &http.Server{
@@ -22,7 +29,7 @@ func main() {
 
 	fmt.Println("Server is running Port: ", port)
 
-	err := s.ListenAndServe()
+	err = s.ListenAndServe()
 	if err != nil {
 		panic(err)
 	}
